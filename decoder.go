@@ -66,6 +66,7 @@ func NewDecoder(r io.Reader, plugins ...plugin) *Decoder {
 // input and stores it in the value pointed to by v.
 func (dec *Decoder) Decode(root *Node) error {
 	xmlDec := xml.NewDecoder(dec.r)
+	xmlDec.Strict = false
 
 	// That will convert the charset if the provided XML is non-UTF-8
 	xmlDec.CharsetReader = charset.NewReaderLabel
